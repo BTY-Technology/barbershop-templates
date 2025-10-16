@@ -1,0 +1,1016 @@
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ATELIER — Fashion Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+.glass { backdrop-filter: blur(20px); }
+.hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1); }
+.gradient-mesh { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%); }
+.text-gradient { background: linear-gradient(135deg, #334155 0%, #64748b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.floating { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.scale-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.scale-hover:hover { transform: scale(1.05); }
+.blur-edges::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(148, 163, 184, 0.3), rgba(203, 213, 225, 0.3)); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: xor; }
+.slide-up { transform: translateY(30px); opacity: 0; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.slide-up.visible { transform: translateY(0); opacity: 1; }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.parallax { transform: translateZ(0); backface-visibility: hidden; }
+.scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+.magnetic { transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.glow-hover { transition: all 0.3s ease; }
+.glow-hover:hover { box-shadow: 0 0 30px rgba(147, 51, 234, 0.3); }
+.image-parallax { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.rotate-hover { transition: transform 0.5s ease; }
+.rotate-hover:hover { transform: rotate(3deg) scale(1.02); }
+.text-reveal { overflow: hidden; }
+.text-reveal span { display: inline-block; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.text-reveal.visible span { transform: translateY(0); }
+/* Enhanced Timeline Styles */
+.timeline-step {
+opacity: 0;
+transform: translateY(50px);
+transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.timeline-step.animate-in {
+opacity: 1;
+transform: translateY(0);
+}
+.timeline-dot {
+background: #e2e8f0;
+transform: scale(0.8);
+transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.timeline-dot.active {
+background: #475569;
+transform: scale(1);
+box-shadow: 0 0 20px rgba(71, 85, 105, 0.4);
+}
+.progress-line {
+height: 0%;
+background: linear-gradient(to bottom, #475569, #64748b);
+transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+box-shadow: 0 0 10px rgba(71, 85, 105, 0.3);
+}
+</style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style></head>
+<body class="min-h-screen gradient-mesh font-sans antialiased text-slate-800"><div class="top-0 w-full h-screen bg-cover bg-center -z-10 absolute" style="background-image: url(&quot;https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/a8f75e15-5f15-4877-a253-da0b8f89efee_3840w.jpg&quot;);"></div>
+    <!-- Floating Nav -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 fade-in">
+        <nav class="glass border rounded-2xl px-6 py-3 shadow-lg bg-white/80 border-slate-200/60 shadow-slate-900/5">
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-lg font-semibold tracking-tight">ATELIER</a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a class="text-sm font-medium transition text-slate-600 hover:text-slate-900" href="#collections">Collections</a>
+                    <a class="text-sm font-medium transition text-slate-600 hover:text-slate-900" href="#studio">Studio</a>
+                    <a class="text-sm font-medium transition text-slate-600 hover:text-slate-900" href="#process">Process</a>
+                    <a class="text-sm font-medium transition text-slate-600 hover:text-slate-900" href="#contact">Contact</a>
+                </div>
+                <button class="md:hidden p-2 rounded-lg transition hover:bg-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu h-4 w-4" style="stroke-width: 1.5;"><path d="M4 12h16"></path><path d="M4 18h16"></path><path d="M4 6h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex overflow-hidden fade-in bg-gradient-to-br from-slate-50 via-white to-purple-50/30 items-center justify-center">
+    <div class="max-w-7xl sm:px-6 relative z-10 text-center mr-auto ml-auto pr-4 pl-4">
+        <div class="fade-in">
+            <!-- Enhanced badge/subtitle -->
+            <div class="mb-8 slide-up visible">
+                <span class="inline-flex items-center gap-2 glass text-sm font-medium text-[#000000] bg-white/60 border-[#000000]/40 border rounded-full pt-3 pr-6 pb-3 pl-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+                    Haute Couture Studio
+                </span>
+            </div>
+            
+            <div class="text-reveal visible mb-8">
+                <h1 class="sm:text-8xl lg:text-9xl leading-none text-7xl font-light tracking-tight font-playfair">
+                    <span class="bg-gradient-to-r bg-clip-text text-transparent inline-block mb-4 from-slate-800 via-slate-600 to-purple-700">Timeless</span>
+                    
+                    <span class="font-light inline-block relative text-slate-400">
+                        <span class="">ÉLEGANCE</span>
+                        <div class="absolute -right-8 -top-4 w-8 h-8 bg-gradient-to-br rounded-full opacity-60 blur-sm floating from-purple-300 to-pink-300"></div>
+                    </span>
+                </h1>
+            </div>
+            
+            <p class="text-xl sm:text-2xl lg:text-3xl max-w-4xl mx-auto mb-16 leading-relaxed slide-up visible font-light text-slate-600">
+                Where timeless fashion meets contemporary artistry—crafting bespoke pieces that celebrate your unique elegance and personal style.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 slide-up stagger-1 visible mb-16">
+                <button class="group glass border rounded-2xl px-10 py-5 font-medium hover-lift magnetic flex items-center gap-3 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 border-slate-200/60 text-slate-800" style="transform: translate(0px, 0px);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    Explore Collections
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-5 w-5 group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+                <button class="glass border rounded-2xl px-10 py-5 font-medium hover-lift magnetic flex items-center gap-3 glow-hover bg-gradient-to-r shadow-lg hover:shadow-2xl transition-all duration-300 from-slate-900 to-purple-900 border-slate-800 text-white" style="transform: translate(0px, 0px);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                    Book Consultation
+                </button>
+            </div>
+            
+            <!-- Social proof stats -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 slide-up stagger-2 visible">
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-light font-playfair mb-1 text-slate-800">500+</div>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider">Happy Clients</p>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-slate-300"></div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-light font-playfair mb-1 text-slate-800">15 Years</div>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider">Experience</p>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-slate-300"></div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-light font-playfair mb-1 text-slate-800">Award Winning</div>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider">Studio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Enhanced floating elements with better positioning -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-gradient-to-br rounded-full opacity-30 blur-xl floating from-purple-200 to-pink-200"></div>
+    <div class="absolute bottom-1/3 right-16 w-20 h-20 bg-gradient-to-br rounded-full opacity-30 blur-xl floating from-blue-200 to-indigo-200" style="animation-delay: -2s;"></div>
+    <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-gradient-to-br rounded-full opacity-20 blur-xl floating from-amber-200 to-orange-200" style="animation-delay: -4s;"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-12 h-12 bg-gradient-to-br rounded-full opacity-25 blur-xl floating from-green-200 to-emerald-200" style="animation-delay: -1s;"></div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 slide-up stagger-3 visible">
+        <div class="flex flex-col gap-2 text-slate-400 items-center cursor-pointer transition-all duration-300 hover:text-slate-600" onclick="document.getElementById('collections').scrollIntoView({behavior: 'smooth', block: 'start'})">
+    <span class="text-sm font-medium text-slate-600 tracking-wider">SCROLL</span>
+    <div class="w-px h-8 bg-slate-600"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down animate-bounce w-[16px] h-[16px] text-slate-600 transition-colors duration-300" data-icon-replaced="true" style="width: 16px; height: 16px;"><path d="m6 9 6 6 6-6" class=""></path></svg>
+</div>
+    </div>
+</section>
+
+        <!-- Stats Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 py-20 scroll-reveal visible">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center slide-up stagger-1 visible">
+                    <div class="text-4xl sm:text-5xl font-light font-playfair text-gradient mb-2" data-count="500">5</div>
+                    <p class="text-slate-600">Happy Clients</p>
+                </div>
+                <div class="text-center slide-up stagger-2 visible">
+                    <div class="text-4xl sm:text-5xl font-light font-playfair text-gradient mb-2" data-count="1200">12</div>
+                    <p class="text-slate-600">Designs Created</p>
+                </div>
+                <div class="text-center slide-up stagger-3 visible">
+                    <div class="text-4xl sm:text-5xl font-light font-playfair text-gradient mb-2" data-count="15">1</div>
+                    <p class="text-slate-600">Years Experience</p>
+                </div>
+                <div class="text-center slide-up stagger-4 visible">
+                    <div class="text-4xl sm:text-5xl font-light font-playfair text-gradient mb-2" data-count="98">1</div>
+                    <p class="text-slate-600">Satisfaction %</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Studio Section -->
+        <section id="studio" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 scroll-reveal visible">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-up visible">
+                    <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">About Our Studio</p>
+                    <h2 class="text-4xl sm:text-6xl font-light font-playfair tracking-tight text-gradient mb-8">Crafted with Passion</h2>
+                    <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+                        <p class="">For over a decade, Atelier has been at the forefront of bespoke fashion design, creating timeless pieces that reflect the unique personality of each client.</p>
+                        <p>Our atelier combines traditional craftsmanship with contemporary design sensibilities, resulting in garments that are both elegant and innovative.</p>
+                        <p>Every piece is meticulously crafted by our skilled artisans using only the finest materials sourced from renowned suppliers worldwide.</p>
+                    </div>
+                    <div class="mt-10">
+                        <button class="glass border rounded-2xl px-8 py-4 font-medium hover-lift magnetic flex items-center gap-3 bg-white/80 border-slate-200/60">
+                            Discover Our Story
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" class="lucide lucide-external-link h-5 w-5" style="stroke-width: 1.5;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative slide-up stagger-1 visible">
+                    <div class="relative z-10 rotate-hover">
+                        <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/3208bf01-65b0-4fa1-8ea9-3dd17c27c1ce_1600w.jpg" alt="Atelier Studio" class="w-full h-[600px] object-cover rounded-3xl shadow-2xl">
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 w-full h-full opacity-30 -z-10 bg-[#ccd2d6] rounded-3xl"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collection with Bento Grid -->
+        <section id="collections" class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-40 pr-4 pb-40 pl-4">
+            <div class="text-center mb-16 slide-up visible">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">Featured Collection</p>
+                <h2 class="sm:text-7xl text-gradient text-5xl font-light tracking-tight font-playfair mb-6">Spring Awakening</h2>
+                <p class="max-w-2xl text-xl text-slate-600 mr-auto ml-auto">Ethereal designs inspired by nature's rebirth, crafted with sustainable luxury materials.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 slide-up stagger-1 visible" style="column-fill: balance;">
+    <!-- Large Hero Image -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 480px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/0acba87b-568b-4948-8d56-d3e725650040_800w.jpg" alt="Spring Collection Hero" class="w-full h-full object-cover image-parallax group-hover:scale-110" style="">
+            <div class="absolute inset-0 bg-gradient-to-t via-transparent to-transparent from-slate-900/60"></div>
+            <div class="absolute bottom-8 left-8 right-8 text-white">
+                <span class="inline-block px-3 py-1 rounded-full glass text-sm font-medium mb-4 bg-white/20">Evening Collection</span>
+                <h3 class="text-3xl font-light font-playfair mb-2">Midnight Garden</h3>
+                <p class="text-lg text-white/80">Flowing silhouettes in midnight silk</p>
+            </div>
+            <div class="absolute top-6 right-6">
+                <button class="glass border rounded-xl p-3 transition magnetic bg-white/20 border-white/30 text-white hover:bg-white/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daywear Collection -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 320px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/79bded17-e03a-4c03-b0be-47af0aef19c7_800w.jpg" alt="Daywear Collection" class="w-full h-full object-cover image-parallax group-hover:scale-110" style="">
+            <div class="absolute inset-0 bg-gradient-to-t to-transparent from-slate-900/40"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-sm font-medium">Daywear</span>
+                <p class="text-xs mt-1 text-white/80">Effortless elegance for every day</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessories -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 280px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/d9701279-c2dd-4256-b7c4-7dc1874bbd1e_800w.jpg" alt="Accessories" class="w-full h-full object-cover image-parallax group-hover:scale-110" style="">
+            <div class="absolute inset-0 bg-gradient-to-t to-transparent from-slate-900/40"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-sm font-medium">Accessories</span>
+                <p class="text-xs mt-1 text-white/80">The perfect finishing touch</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Collection Item -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 360px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/9473f3af-3f99-40ef-a58f-01b003f9d8b1_800w.jpg" alt="Formal Collection" class="w-full h-full object-cover image-parallax group-hover:scale-110" style="">
+            <div class="absolute inset-0 bg-gradient-to-t to-transparent from-slate-900/40"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-sm font-medium">Formal Wear</span>
+                <p class="text-xs mt-1 text-white/80">Sophisticated pieces for special occasions</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Casual Collection -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 240px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/cb157054-620a-4023-8af4-73869ab9ec33_800w.jpg" alt="Casual Collection" class="w-full h-full object-cover image-parallax group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t to-transparent from-slate-900/40"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-sm font-medium">Casual Luxe</span>
+                <p class="text-xs mt-1 text-white/80">Relaxed sophistication</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seasonal Special -->
+    <div class="break-inside-avoid relative group hover-lift scale-hover mb-6">
+        <div class="relative glass border rounded-3xl overflow-hidden shadow-lg bg-white/60 border-slate-200/60" style="height: 400px;">
+            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/5d3f31d8-ad29-4752-bf8e-7989ba050dbc_800w.jpg" alt="Seasonal Collection" class="w-full h-full object-cover image-parallax group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t to-transparent from-slate-900/40"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-sm font-medium">Seasonal Special</span>
+                <p class="text-xs mt-1 text-white/80">Limited edition pieces</p>
+            </div>
+            <div class="absolute top-4 right-4">
+                <span class="glass px-2 py-1 rounded-full text-xs font-medium bg-amber-600 text-white">New</span>
+            </div>
+        </div>
+    </div>
+</div>
+        </section>
+
+        <!-- Design Process Section with Enhanced Timeline -->
+        <section id="process" class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+    <div class="text-center mb-16 slide-up visible">
+        <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">Our Process</p>
+        <h2 class="sm:text-7xl text-gradient text-5xl font-light tracking-tight font-playfair mb-6">From Vision to Reality</h2>
+        <p class="max-w-2xl text-xl text-slate-600 mr-auto ml-auto">A seamless journey from initial consultation to your perfect garment.</p>
+    </div>
+
+    <div class="relative" id="timeline-container">
+        <!-- Enhanced Progress Line -->
+        <div class="absolute left-1/2 transform -translate-x-0.5 w-1 h-full bg-slate-200 hidden lg:block rounded-full overflow-hidden">
+            <div id="progress-line" class="w-full progress-line rounded-full" style="height: 0%; background: linear-gradient(to bottom, #475569, #64748b); transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 0 10px rgba(71, 85, 105, 0.3);"></div>
+        </div>
+        
+        <div class="space-y-20" id="timeline-steps">
+            <!-- Step 1 -->
+            <div class="flex flex-col lg:flex-row gap-12 items-center timeline-step" data-step="1" style="opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="flex-1 lg:text-right lg:pr-12">
+                    <div class="glass hover-lift bg-white/80 border-slate-200/60 border rounded-3xl pt-8 pr-8 pb-8 pl-8 transform transition-all duration-500">
+                        <div class="flex gap-4 lg:justify-end mb-6 items-center">
+                            <span class="uppercase text-sm font-medium text-slate-600 tracking-wider">Step 01</span>
+                        </div>
+                        <h3 class="text-3xl font-light font-playfair mb-4 text-slate-800">Initial Consultation</h3>
+                        <p class="leading-relaxed text-slate-600 mb-6">We begin with a detailed conversation about your vision, style preferences, and the occasion for your custom piece. Understanding your lifestyle and aesthetic goals is our first priority.</p>
+                        <div class="flex items-center gap-2 text-sm text-slate-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Duration: 60-90 minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-6 h-6 z-10 flex-shrink-0 rounded-full shadow-lg timeline-dot" data-dot="1" style="background: #e2e8f0; transform: scale(0.8); opacity: 0.5; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                <div class="flex-1 lg:pl-12"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 timeline-step" data-step="2" style="opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="flex-1 lg:pr-12"></div>
+                <div class="w-6 h-6 z-10 flex-shrink-0 rounded-full shadow-lg timeline-dot" data-dot="2" style="background: #e2e8f0; transform: scale(0.8); opacity: 0.5; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                <div class="flex-1 lg:pl-12">
+                    <div class="glass hover-lift bg-white/80 border-slate-200/60 border rounded-3xl pt-8 pr-8 pb-8 pl-8 transform transition-all duration-500">
+                        <div class="flex gap-4 mb-6 items-center">
+                            <span class="uppercase text-sm font-medium text-slate-600 tracking-wider">Step 02</span>
+                        </div>
+                        <h3 class="text-3xl font-light font-playfair mb-4 text-slate-800">Design &amp; Sketching</h3>
+                        <p class="leading-relaxed text-slate-600 mb-6">Our designers create detailed sketches and color palettes based on your requirements and personal aesthetic. We'll present multiple concepts for your consideration.</p>
+                        <div class="flex items-center gap-2 text-sm text-slate-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Duration: 3-5 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 timeline-step" data-step="3" style="opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="flex-1 lg:text-right lg:pr-12">
+                    <div class="glass border rounded-3xl p-8 hover-lift bg-white/80 border-slate-200/60 transform transition-all duration-500">
+                        <div class="flex items-center gap-4 lg:justify-end mb-6">
+                            <span class="uppercase text-sm font-medium text-slate-600 tracking-wider">Step 03</span>
+                        </div>
+                        <h3 class="text-3xl font-light font-playfair mb-4 text-slate-800">Measurements &amp; Fitting</h3>
+                        <p class="leading-relaxed text-slate-600 mb-6">Precise measurements are taken and a fitting schedule is established to ensure the perfect fit. We create a custom pattern specifically for your body.</p>
+                        <div class="flex items-center gap-2 text-sm text-slate-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Duration: 45-60 minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-6 h-6 z-10 flex-shrink-0 rounded-full shadow-lg timeline-dot" data-dot="3" style="background: #e2e8f0; transform: scale(0.8); opacity: 0.5; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                <div class="flex-1 lg:pl-12"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 timeline-step" data-step="4" style="opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="flex-1 lg:pr-12"></div>
+                <div class="w-6 h-6 z-10 flex-shrink-0 rounded-full shadow-lg timeline-dot" data-dot="4" style="background: #e2e8f0; transform: scale(0.8); opacity: 0.5; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                <div class="flex-1 lg:pl-12">
+                    <div class="glass border rounded-3xl p-8 hover-lift bg-white/80 border-slate-200/60 transform transition-all duration-500">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="uppercase text-sm font-medium text-slate-600 tracking-wider">Step 04</span>
+                        </div>
+                        <h3 class="text-3xl font-light font-playfair mb-4 text-slate-800">Final Creation</h3>
+                        <p class="leading-relaxed text-slate-600 mb-6">Your masterpiece is carefully crafted by our skilled artisans with meticulous attention to every detail. Quality checks ensure perfection at every stage.</p>
+                        <div class="flex items-center gap-2 text-sm text-slate-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Duration: 4-6 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Enhanced timeline animation with smooth sequential reveal
+    function initSmoothTimeline() {
+        const progressLine = document.getElementById('progress-line');
+        const timelineSteps = document.querySelectorAll('.timeline-step');
+        const timelineDots = document.querySelectorAll('.timeline-dot');
+        const timelineContainer = document.getElementById('timeline-container');
+        
+        if (!progressLine || !timelineSteps.length || !timelineDots.length) return;
+
+        let animationStarted = false;
+
+        // Reset all elements to initial state
+        function resetTimeline() {
+            progressLine.style.height = '0%';
+            timelineSteps.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(50px)';
+            });
+            timelineDots.forEach(dot => {
+                dot.style.background = '#e2e8f0';
+                dot.style.transform = 'scale(0.8)';
+                dot.style.opacity = '0.5';
+                dot.style.boxShadow = 'none';
+            });
+        }
+
+        // Animate timeline sequentially
+        function animateTimeline() {
+            if (animationStarted) return;
+            animationStarted = true;
+
+            // Animate progress line first
+            setTimeout(() => {
+                progressLine.style.height = '100%';
+            }, 200);
+
+            // Animate each step with staggered timing
+            timelineSteps.forEach((step, index) => {
+                const dot = timelineDots[index];
+                const delay = 400 + (index * 600); // 600ms between each step
+
+                setTimeout(() => {
+                    // Fade in step card
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0px)';
+                    
+                    // Animate corresponding dot
+                    if (dot) {
+                        dot.style.background = '#475569';
+                        dot.style.transform = 'scale(1)';
+                        dot.style.opacity = '1';
+                        dot.style.boxShadow = '0 0 20px rgba(71, 85, 105, 0.4)';
+                    }
+                }, delay);
+            });
+        }
+
+        // Intersection Observer to trigger animation when section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateTimeline();
+                } else if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+                    // Reset when scrolling back up past the section
+                    animationStarted = false;
+                    resetTimeline();
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '-100px 0px -50px 0px'
+        });
+
+        // Initialize
+        resetTimeline();
+        observer.observe(timelineContainer);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSmoothTimeline);
+    } else {
+        initSmoothTimeline();
+    }
+    </script>
+</section>
+
+        <!-- Interactive Services Cards -->
+        
+
+        <!-- Team Section -->
+        <section class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+            <div class="text-center mb-16 slide-up visible">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">Meet Our Team</p>
+                <h2 class="text-5xl sm:text-7xl font-light font-playfair tracking-tight text-gradient mb-6">Master Artisans</h2>
+                <p class="text-xl max-w-2xl mx-auto text-slate-600">The talented individuals who bring your fashion dreams to life.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group slide-up stagger-1 visible">
+                    <div class="rounded-3xl ring-1 p-6 sm:p-7 shadow-[0_2px_0_rgba(0,0,0,0.03),0_24px_48px_-24px_rgba(0,0,0,0.25)] ring-slate-200 bg-white hover:shadow-xl transition-all duration-300">
+        <div class="relative rounded-2xl ring-1 h-40 overflow-hidden bg-slate-50 ring-black/5">
+          <div class="absolute inset-0 grid place-items-center bg-cover bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/3327dfd4-83f5-40ec-a77c-cae46f6652c2_800w.jpg)] bg-center group-hover:scale-110 transition-transform duration-500">
+            
+          </div>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold tracking-tight text-slate-900">Real‑Time Analytics</h3>
+        <p class="font-medium text-slate-600 mb-4">Master Tailor</p>
+        <p class="mt-1.5 text-sm text-slate-600">Monitor your AI workflows with comprehensive dashboards, performance metrics, and actionable insights.</p>
+      </div>
+                </div>
+
+                <div class="group slide-up stagger-2 visible">
+                    <div class="rounded-3xl ring-1 p-6 sm:p-7 shadow-[0_2px_0_rgba(0,0,0,0.03),0_24px_48px_-24px_rgba(0,0,0,0.25)] ring-slate-200 bg-white hover:shadow-xl transition-all duration-300">
+        <div class="relative rounded-2xl ring-1 h-40 overflow-hidden bg-slate-50 ring-black/5">
+          <div class="absolute inset-0 grid place-items-center bg-cover bg-center group-hover:scale-110 transition-transform duration-500 bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/b59bad79-703a-4c05-8ed2-fafcc49a7b51_3840w.jpg)]">
+            
+          </div>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold tracking-tight text-slate-900">Marco Rossi</h3>
+        <p class="font-medium text-slate-600 mb-4">Master Tailor</p>
+        <p class="mt-1.5 text-sm text-slate-600">Marco's precision and craftsmanship ensure every garment achieves the perfect fit and exceptional quality.</p>
+      </div>
+                </div>
+
+                <div class="group slide-up stagger-3 visible">
+                    <div class="rounded-3xl ring-1 p-6 sm:p-7 shadow-[0_2px_0_rgba(0,0,0,0.03),0_24px_48px_-24px_rgba(0,0,0,0.25)] ring-slate-200 bg-white hover:shadow-xl transition-all duration-300">
+        <div class="relative rounded-2xl ring-1 h-40 overflow-hidden bg-slate-50 ring-black/5">
+          <div class="absolute inset-0 grid place-items-center bg-cover bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/096dab35-ecaf-418f-a932-5b514543b035_800w.jpg)] bg-center group-hover:scale-110 transition-transform duration-500">
+            
+          </div>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 tracking-tight mt-5">Emma Chen</h3>
+        <p class="font-medium text-slate-600 mb-4">Personal Stylist</p>
+        <p class="mt-1.5 text-sm text-slate-600">Emma specializes in understanding each client's unique style and translating it into the perfect wardrobe.</p>
+      </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel -->
+        <section class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+            <div class="text-center mb-16 slide-up visible">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">Client Stories</p>
+                <h2 class="text-5xl sm:text-7xl font-light font-playfair tracking-tight text-gradient mb-6">Loved by Many</h2>
+            </div>
+
+            <div class="relative slide-up stagger-1 visible">
+  <!-- Static testimonial cards styled like the reference -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- Card 1 -->
+  <div class="bg-white rounded-3xl ring-1 ring-slate-200 p-12 text-center shadow-slate-900/5 transition-all duration-300 hover:shadow-xl hover:ring-slate-300 hover:-translate-y-2 hover:scale-105 group cursor-pointer">
+    <div class="w-20 h-20 mx-auto mb-8 rounded-full p-1 bg-white ring-1 ring-slate-200 transition-all duration-300 group-hover:ring-slate-300 group-hover:shadow-lg">
+      <div class="w-full h-full rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110">
+        <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/6427e4fe-cc3d-458c-82db-b97593427830_320w.jpg" alt="Client avatar" class="w-full h-full object-cover">
+      </div>
+    </div>
+    
+    <p class="text-slate-600 leading-relaxed mx-auto max-w-md transition-colors duration-300 group-hover:text-slate-700">
+      constantly strive to add value in every conversation with prospects and customers. Your team helped us organize assets so sales can find what they need and reach the right prospects at the right time.
+    </p>
+    <div class="w-24 h-px bg-slate-200 mt-6 mr-auto mb-6 ml-auto transition-all duration-300 group-hover:bg-slate-400 group-hover:w-32"></div>
+    <div class="text-xs tracking-widest text-slate-500 uppercase transition-colors duration-300 group-hover:text-slate-700">
+      Sarah Williams
+      <div class="mt-1">Bride &amp; CEO</div>
+    </div>
+    <div class="mt-8 inline-flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-slate-400 mx-auto transition-all duration-300 group-hover:border-slate-400 group-hover:text-slate-600 group-hover:bg-slate-50 group-hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="quote" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+    </div>
+  </div>
+  
+  <!-- Card 2 -->
+  <div class="bg-white rounded-3xl ring-1 ring-slate-200 p-12 text-center shadow-slate-900/5 transition-all duration-300 hover:shadow-xl hover:ring-slate-300 hover:-translate-y-2 hover:scale-105 group cursor-pointer">
+    <div class="w-20 h-20 mx-auto mb-8 rounded-full p-1 bg-white ring-1 ring-slate-200 transition-all duration-300 group-hover:ring-slate-300 group-hover:shadow-lg">
+      <div class="w-full h-full rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110">
+        <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/56000a50-18c1-4db4-bb41-87aa44b5c251_800w.jpg" alt="Client avatar" class="w-full h-full object-cover">
+      </div>
+    </div>
+    
+    <p class="text-slate-600 leading-relaxed mx-auto max-w-md transition-colors duration-300 group-hover:text-slate-700">
+      I'm amazed at how quickly the team gets back to me—and in such helpful fashion. The experience feels truly customized to my needs with support staff that's genuinely legendary.
+    </p>
+    <div class="w-24 h-px bg-slate-200 mx-auto mt-6 mb-6 transition-all duration-300 group-hover:bg-slate-400 group-hover:w-32"></div>
+    <div class="text-xs tracking-widest text-slate-500 uppercase transition-colors duration-300 group-hover:text-slate-700">
+      Jessica Martinez
+      <div class="mt-1">Fashion Influencer</div>
+    </div>
+    <div class="mt-8 inline-flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-slate-400 mx-auto transition-all duration-300 group-hover:border-slate-400 group-hover:text-slate-600 group-hover:bg-slate-50 group-hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="quote" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+    </div>
+  </div>
+  
+  <!-- Card 3 -->
+  <div class="bg-white rounded-3xl ring-1 ring-slate-200 p-12 text-center shadow-slate-900/5 transition-all duration-300 hover:shadow-xl hover:ring-slate-300 hover:-translate-y-2 hover:scale-105 group cursor-pointer">
+    <div class="w-20 h-20 mx-auto mb-8 rounded-full p-1 bg-white ring-1 ring-slate-200 transition-all duration-300 group-hover:ring-slate-300 group-hover:shadow-lg">
+      <div class="w-full h-full rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110">
+        <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/2911b4b5-c0c3-445a-a157-93edee63f9af_320w.jpg" alt="Client avatar" class="w-full h-full object-cover">
+      </div>
+    </div>
+    
+    <p class="text-slate-600 leading-relaxed mx-auto max-w-md transition-colors duration-300 group-hover:text-slate-700">
+      An incredibly effective service—our team can collaborate seamlessly and deliver with confidence. The process is simple, elegant, and consistently reliable.
+    </p>
+    <div class="w-24 h-px bg-slate-200 mx-auto mt-6 mb-6 transition-all duration-300 group-hover:bg-slate-400 group-hover:w-32"></div>
+    <div class="text-xs tracking-widest text-slate-500 uppercase transition-colors duration-300 group-hover:text-slate-700">
+      Michael Thompson
+      <div class="mt-1">Executive Director</div>
+    </div>
+    <div class="mt-8 inline-flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-slate-400 mx-auto transition-all duration-300 group-hover:border-slate-400 group-hover:text-slate-600 group-hover:bg-slate-50 group-hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="quote" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+    </div>
+  </div>
+</div>
+
+  <!-- Keep original slider elements hidden for script compatibility -->
+  <div id="testimonial-slider" class="hidden">
+    <div class="flex" id="testimonial-track"></div>
+  </div>
+  <div class="hidden items-center justify-center gap-4 mt-8">
+    <button id="prev-testimonial"></button>
+    <div id="testimonial-dots">
+      <button></button><button></button><button></button>
+    </div>
+    <button id="next-testimonial"></button>
+  </div>
+</div>
+        </section><section class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+            <div class="text-center mb-16 slide-up visible">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">Our Services</p>
+                <h2 class="text-5xl sm:text-7xl font-light font-playfair tracking-tight text-gradient mb-6">Tailored to You</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="aura-emfalozj5">
+    <!-- Personal Styling -->
+    <div class="group hover-lift slide-up stagger-1 visible transition-all duration-500 hover:scale-105 rounded-3xl mt-0 mb-20 scale-hover">
+        <div class="relative glass overflow-hidden bg-white/80 border-slate-200/60 border rounded-3xl pt-8 pr-8 pb-8 pl-8 shadow-lg hover:shadow-2xl hover:bg-slate-900 transition-all duration-500">
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-4">
+                    
+                    <span class="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-white/70 transition-colors duration-500">Popular</span>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-slate-800 group-hover:text-white transition-colors duration-500">Personal Styling</h3>
+                <p class="mb-6 leading-relaxed text-slate-600 group-hover:text-white/80 transition-colors duration-500">Transform your wardrobe with our person selections.</p>
+                
+                <div class="mb-6 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Wardrobe audit &amp; assessment</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Personalized style guide</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Shopping recommendations</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Color palette analysis</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Follow-up styling tips</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-4xl font-light tracking-tight text-slate-900 group-hover:text-white transition-colors duration-500">$399</span>
+                    <span class="text-slate-500 ml-2 group-hover:text-white/70 transition-colors duration-500">/ 2 hour session</span>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-white/60 transition-colors duration-500">Perfect for style refreshes</p>
+                </div>
+                <button class="w-full glass transition-all duration-500 hover:shadow-xl font-medium text-white bg-slate-900 rounded-2xl pt-4 pb-4 group-hover:bg-white group-hover:text-slate-900 hover:scale-105 transform">
+                    Book Session
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ready-to-Wear -->
+    <div class="group hover-lift slide-up stagger-2 visible rounded-3xl mb-12 scale-hover transition-all duration-500 hover:scale-105">
+        <div class="relative glass overflow-hidden bg-slate-900/90 border-slate-300/60 border rounded-3xl pt-8 pr-8 pb-8 pl-8 shadow-lg hover:shadow-2xl hover:bg-white/90 transition-all duration-500">
+            <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                <span class="glass text-sm font-medium rounded-full pt-2 pr-4 pb-2 pl-4 text-white bg-slate-800 group-hover:bg-slate-200 group-hover:text-slate-800 transition-colors duration-500">Most Popular</span>
+            </div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-4">
+                    
+                    <span class="text-xs font-medium text-white/60 uppercase tracking-wider group-hover:text-slate-600 transition-colors duration-500">Premium</span>
+                </div>
+                <h3 class="text-2xl font-semibold text-white mb-4 group-hover:text-slate-900 transition-colors duration-500">Ready-to-Wear</h3>
+                <p class="leading-relaxed text-white/60 mb-6 group-hover:text-slate-600 transition-colors duration-500">Curated fashion pieces from our latest collections, tailored to fit your personal style perfectly.</p>
+                
+                <div class="mb-6 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin-slate-500="" transition-colors="" duration-500"=""><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">Complete styling session (3 hours)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-slate-500 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">5-7 curated pieces selection</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-slate-500 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">Professional alterations included</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-slate-500 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">Seasonal wardrobe planning</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-slate-500 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">6-month styling support</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-slate-500 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-white/80 group-hover:text-slate-600 transition-colors duration-500">Exclusive collection access</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-4xl font-light text-white tracking-tight group-hover:text-slate-900 transition-colors duration-500">$899</span>
+                    <span class="text-white/60 ml-2 group-hover:text-slate-500 transition-colors duration-500">/ full service</span>
+                    <p class="text-xs text-white/50 mt-1 group-hover:text-slate-500 transition-colors duration-500">Complete wardrobe transformation</p>
+                </div>
+                <button class="w-full glass transition-all duration-500 hover:shadow-xl font-medium text-slate-900 bg-white rounded-2xl pt-4 pb-4 group-hover:bg-slate-900 group-hover:text-white hover:scale-105 transform">
+                    Explore Collection
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Couture -->
+    <div class="group hover-lift slide-up stagger-3 visible rounded-3xl mb-12 scale-hover transition-all duration-500 hover:scale-105">
+        <div class="relative glass overflow-hidden bg-white/80 border-slate-200/60 border rounded-3xl pt-8 pr-8 pb-8 pl-8 shadow-lg hover:shadow-2xl hover:bg-slate-900 transition-all duration-500">
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-4">
+                    
+                    <span class="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-white/70 transition-colors duration-500">Luxury</span>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-slate-800 group-hover:text-white transition-colors duration-500">Bespoke Couture</h3>
+                <p class="mb-6 leading-relaxed text-slate-600 group-hover:text-white/80 transition-colors duration-500">Exclusively designed pieces crafted with the finest materials and unparalleled attention to detail.</p>
+                
+                <div class="mb-6 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">One-on-one design consultation</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Custom pattern creation</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Luxury fabric selection</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Multiple fittings (4-5 sessions)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Hand-finished details</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-white/70 transition-colors duration-500"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-sm text-slate-600 group-hover:text-white/80 transition-colors duration-500">Lifetime garment care service</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-4xl font-light tracking-tight text-slate-900 group-hover:text-white transition-colors duration-500">$2,999</span>
+                    <span class="text-slate-500 ml-2 group-hover:text-white/70 transition-colors duration-500">/ 8 weeks</span>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-white/60 transition-colors duration-500">Truly one-of-a-kind creation</p>
+                </div>
+                <button class="w-full glass rounded-2xl py-4 font-medium transition-all duration-500 hover:shadow-xl bg-slate-900 text-white group-hover:bg-white group-hover:text-slate-900 hover:scale-105 transform">
+                    Schedule Consultation
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+        </section>
+
+        <!-- Newsletter CTA -->
+        <section class="max-w-7xl sm:px-6 scroll-reveal visible mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+    <div class="relative glass overflow-hidden slide-up visible text-center bg-cover border rounded-3xl pt-12 pr-12 pb-12 pl-12 shadow-lg bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/d7ee1ae4-6186-4fda-8f94-0751ebe55bf2_800w.jpg)] bg-white/80 border-slate-200/60">
+        <div class="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br rounded-full opacity-40 blur-2xl transform -translate-x-12 -translate-y-12 from-blue-100 to-indigo-200"></div>
+        <div class="absolute bottom-0 right-0 w-40 h-40 opacity-40 transform bg-gradient-to-br from-purple-100 to-pink-200 rounded-full blur-2xl translate-x-12 translate-y-12"></div>
+        <div class="relative z-10">
+            <h2 class="sm:text-6xl text-gradient text-4xl font-light tracking-tight font-playfair mb-6">Stay Inspired</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto text-slate-600">Get exclusive access to new collections, styling tips, and behind-the-scenes insights from our atelier.</p>
+            <form class="max-w-md mx-auto">
+                <div class="flex gap-3">
+                    <input type="email" placeholder="Enter your email" class="flex-1 glass border rounded-2xl px-4 py-3 placeholder-slate-500 focus:outline-none focus:border-slate-400 magnetic bg-white/60 border-slate-200/60 text-slate-800">
+                    <button type="submit" class="glass rounded-2xl px-6 py-3 font-medium hover-lift magnetic glow-hover bg-slate-900 text-white" style="transform: translate(0px, 0px);">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+        <!-- Footer -->
+        <footer class="glass border-t mt-20 bg-white/80 border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                    <!-- Brand -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-4xl font-light font-playfair tracking-tight text-gradient mb-4">ATELIER</h3>
+                        <p class="mb-6 max-w-md leading-relaxed text-slate-600">
+                            Crafting timeless elegance through bespoke fashion design. Where your personal style meets our artistic vision.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="glass border rounded-xl p-3 transition hover-lift magnetic bg-slate-100 border-slate-200/60 text-slate-600 hover:text-slate-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram h-5 w-5" style="stroke-width: 1.5;"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                            </a>
+                            <a href="#" class="glass border rounded-xl p-3 transition hover-lift magnetic bg-slate-100 border-slate-200/60 text-slate-600 hover:text-slate-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin h-5 w-5" style="stroke-width: 1.5;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </a>
+                            <a href="#" class="glass border rounded-xl p-3 transition hover-lift magnetic bg-slate-100 border-slate-200/60 text-slate-600 hover:text-slate-900" style="transform: translate(0px, 0px);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter h-5 w-5" style="stroke-width: 1.5;"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="">
+                        <h4 class="text-lg font-semibold mb-6 text-slate-800">Services</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="transition text-slate-600 hover:text-slate-900">Personal Styling</a></li>
+                            <li class=""><a href="#" class="transition text-slate-600 hover:text-slate-900">Ready-to-Wear</a></li>
+                            <li><a href="#" class="transition text-slate-600 hover:text-slate-900">Bespoke Couture</a></li>
+                            <li><a href="#" class="transition text-slate-600 hover:text-slate-900">Alterations</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6 text-slate-800">Contact</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span class="text-slate-600">Madison Avenue, NYC</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span class="text-slate-600">(555) 123-4567</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m2 7 8.91 5.91a2 2 0 0 0 2.18 0L22 7"></path></svg>
+                                <span class="text-slate-600">hello@atelier.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bottom Footer -->
+                <div class="border-t pt-8 mt-12 flex flex-col sm:flex-row justify-between items-center text-slate-500 border-slate-200">
+                    <p>© 2024 Atelier. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 sm:mt-0">
+                        <a href="#" class="transition hover:text-slate-700">Privacy Policy</a>
+                        <a href="#" class="transition hover:text-slate-700">Terms of Service</a>
+                        <a href="#" class="transition hover:text-slate-700">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Timeline Animation
+        function initTimeline() {
+            const progressLine = document.getElementById('progress-line');
+            const timelineSteps = document.querySelectorAll('.timeline-step');
+            const timelineDots = document.querySelectorAll('.timeline-dot');
+            
+            let currentActiveStep = 0;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const stepNumber = parseInt(entry.target.dataset.step);
+                        
+                        // Animate step
+                        entry.target.classList.add('animate-in');
+                        
+                        // Update progress line and dots
+                        if (stepNumber > currentActiveStep) {
+                            currentActiveStep = stepNumber;
+                            
+                            // Update progress line height
+                            const progressHeight = (currentActiveStep / timelineSteps.length) * 100;
+                            progressLine.style.height = `${progressHeight}%`;
+                            
+                            // Update dots
+                            timelineDots.forEach((dot, index) => {
+                                if (index < currentActiveStep) {
+                                    dot.classList.add('active');
+                                } else {
+                                    dot.classList.remove('active');
+                                }
+                            });
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '-50px'
+            });
+
+            timelineSteps.forEach(step => observer.observe(step));
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.count);
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        updateCounter();
+                        observer.disconnect();
+                    }
+                });
+                
+                observer.observe(counter);
+            });
+        }
+
+        // Scroll Reveal Animation
+        function initScrollReveal() {
+            const elements = document.querySelectorAll('.scroll-reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+            
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // Magnetic Effect
+        function initMagneticEffect() {
+            const magneticElements = document.querySelectorAll('.magnetic');
+            
+            magneticElements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    
+                    const moveX = x * 0.1;
+                    const moveY = y * 0.1;
+                    
+                    element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    element.style.transform = 'translate(0px, 0px)';
+                });
+            });
+        }
+
+        // Smooth scrolling for navigation
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize all functions when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initTimeline();
+            animateCounters();
+            initScrollReveal();
+            initMagneticEffect();
+            initSmoothScroll();
+        });
+    </script>
+
+</body></html>
+
+BTY Technology LogoMade in BTY Technology
+
+
