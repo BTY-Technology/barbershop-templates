@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, FormEvent, useEffect } from 'react'
+import React, { useState, FormEvent, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Input from '@/components/ui/Input'
 import Select from '@/components/ui/Select'
@@ -10,7 +10,7 @@ import { services, getServiceById } from '@/lib/data/services'
 import { validateBookingForm } from '@/utils/validation'
 import { BookingFormData, FormErrors } from '@/types'
 
-export default function BookingPage() {
+function BookingPageContent() {
   const searchParams = useSearchParams()
   const preselectedServiceId = searchParams.get('service')
 
@@ -67,7 +67,7 @@ export default function BookingPage() {
       [name]: value,
     }))
     // Clear error for this field
-    if (errors[name as keyof BookingFormData]) {
+    if (name in errors) {
       setErrors((prev) => ({
         ...prev,
         [name]: undefined,
@@ -161,7 +161,7 @@ export default function BookingPage() {
                     Booking Confirmed!
                   </h3>
                   <p className="text-green-700">
-                    Thank you for booking with us. We've sent a confirmation email to{' '}
+                    Thank you for booking with us. We&apos;ve sent a confirmation email to{' '}
                     {formData.email}. We look forward to seeing you!
                   </p>
                 </div>
@@ -422,5 +422,13 @@ export default function BookingPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingPageContent />
+    </Suspense>
   )
 }

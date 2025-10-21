@@ -160,7 +160,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
               {/* Benefits */}
               <div>
-                <h2 className="text-xl font-semibold mb-3">What's Included:</h2>
+                <h2 className="text-xl font-semibold mb-3">What&apos;s Included:</h2>
                 <ul className="space-y-2">
                   {service.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-3">

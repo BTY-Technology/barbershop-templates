@@ -70,7 +70,7 @@ export default function TestimonialSlider() {
               ))}
             </div>
 
-            <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+            <p className="text-gray-700 mb-6 italic">&ldquo;{testimonial.content}&rdquo;</p>
 
             <div className="flex items-center gap-4">
               <div className="relative w-12 h-12 rounded-full overflow-hidden">

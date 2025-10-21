@@ -1,0 +1,38 @@
+{
+  "id": "barbershop-001",
+  "name": "Classic Barbershop",
+  "category": "barbershop",
+  "description": "A modern, fully-responsive barbershop website template with booking functionality, service showcase, and testimonial sections.",
+  "featured": true,
+  "preview": {
+    "thumbnail": "/previews/barbershop-001/thumbnail.jpg",
+    "screenshots": [
+      "/previews/barbershop-001/home.jpg",
+      "/previews/barbershop-001/services.jpg",
+      "/previews/barbershop-001/booking.jpg"
+    ],
+    "demoUrl": "https://barbershop-001.website.btytechnology.com"
+  },
+  "features": [
+    "Online booking system",
+    "Service catalog with pricing",
+    "Team member profiles",
+    "Client testimonials slider",
+    "Responsive mobile design",
+    "SEO optimized",
+    "Newsletter integration",
+    "Contact form"
+  ],
+  "colors": {
+    "primary": "#1a1a1a",
+    "secondary": "#f5f5f5",
+    "accent": "#d4af37"
+  },
+  "pages": [
+    "Home",
+    "About",
+    "Services",
+    "Booking",
+    "Contact"
+  ]
+}

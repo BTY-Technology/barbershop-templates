@@ -89,7 +89,7 @@ export interface NewsletterFormData {
 }
 
 // Form validation errors
-export interface FormErrors<T> {
+export type FormErrors<T> = {
   [K in keyof T]?: string
 }
 

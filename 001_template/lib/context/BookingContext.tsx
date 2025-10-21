@@ -11,7 +11,7 @@ interface BookingContextType {
   setStep: (step: number) => void
 }
 
-const BookingContext = createContext<BookingContextContextType | undefined>(undefined)
+const BookingContext = createContext<BookingContextType | undefined>(undefined)
 
 const initialBookingState: BookingState = {
   selectedService: null,

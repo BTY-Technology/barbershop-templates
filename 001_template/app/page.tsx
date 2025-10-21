@@ -10,9 +10,31 @@ import BackToTop from "@/components/BackToTop";
 import { getFeaturedServices } from "@/lib/data/services";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: {
+    default: "Barbershop | BTY Technology",
+    template: "%s | BTY Technology",
+  },
   description:
-    "Experience premium grooming at Barbershop. Professional haircuts, beard grooming, and styling services in New York.",
+    "Experience premium grooming at Barbershop. Professional haircuts, beard grooming, and styling services in New York. | BTY Technology",
+  authors: [{ name: "BTY Technology" }],
+  creator: "BTY Technology",
+  publisher: "BTY Technology",
+  icons: {
+    icon: "/btyfavi.png",
+    shortcut: "/btyfavi.png",
+    apple: "/btyfavi.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function HomePage() {
@@ -106,7 +128,10 @@ export default function HomePage() {
 
           {/* Scroll Indicator */}
           <div className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2">
-            <div className="flex flex-col items-center gap-2" style={{ animation: 'bounce 2s ease-in-out infinite' }}>
+            <div
+              className="flex flex-col items-center gap-2"
+              style={{ animation: "bounce 2s ease-in-out infinite" }}
+            >
               <span className="text-sm font-medium text-text tracking-wider">
                 SCROLL
               </span>
@@ -145,9 +170,9 @@ export default function HomePage() {
                   precision and care by our team of master barbers.
                 </p>
                 <p>
-                  With over 15 years of combined experience, we've honed our
-                  craft to deliver exceptional results that make you look and
-                  feel your absolute best. From classic cuts to contemporary
+                  With over 15 years of combined experience, we&apos;ve honed
+                  our craft to deliver exceptional results that make you look
+                  and feel your absolute best. From classic cuts to contemporary
                   styles, we bring your vision to life.
                 </p>
                 <p>
